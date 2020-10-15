@@ -9,7 +9,7 @@ DATETIME_OBJ = datetime.datetime(1970, 1, 1)
 DAY_EMOJIS = {
     "Monday": ":confounded_face:",
     "Tuesday": ":smirking_face:",
-    "Wednesdat": ":relieved_face:",
+    "Wednesday": ":relieved_face:",
     "Thursday": ":smiling_face_with_smiling_eyes:",
     "Friday": ":winking_face_with_tongue:",
     "Saturday": ":squinting_face_with_tongue:",
