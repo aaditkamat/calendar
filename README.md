@@ -1,4 +1,5 @@
 # Calendar 📅
+![Made with Typer](https://img.shields.io/badge/-Made%20With%20Typer-blue)
 
 As a developer, have you ever wanted to look up what day of the week a particular day falls on or find
 the duration between two dates right from your terminal? Well, wait no more because this CLI utility
