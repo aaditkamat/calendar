@@ -42,4 +42,5 @@ python main.py
 ```
 
 # Credits
-This CLI utility has been bootstrapped with [@tiangolo's  Typer](https://github.com/tiangolo/typer)
+1.  This CLI utility has been bootstrapped with [@tiangolo's  Typer](https://github.com/tiangolo/typer)
+2.  Emojis from [emojis.wiki](https://emojis.wiki/monday/)
