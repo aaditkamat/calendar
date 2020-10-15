@@ -28,7 +28,7 @@ def day(date_string: str):
     if date_string == DATETIME_OBJ.now().strftime("%d/%m/%Y"):
         typer.echo(f"Today is {day}")
     else:
-        typer.echo(f"It's a {day}")
+        typer.echo(f"{date.strftime('%B %d %Y')} was a {day}")
 
 
 @app.command()
