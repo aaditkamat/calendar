@@ -27,5 +27,23 @@ def day(date_string: str = DATETIME_OBJ.now().strftime("%d/%m/%Y")):
         typer.echo(f"It's a {day}")
 
 
+@app.command()
+def duration(
+    start_date_string: str,
+    end_date_string: str,
+):
+    start_date, end_date = (
+        DATETIME_OBJ.strptime(start_date_string, "%d/%m/%Y"),
+        DATETIME_OBJ.strptime(end_date_string, "%d/%m/%Y"),
+    )
+    difference = (end_date - start_date).days
+    print(
+        f"Duration between {start_date_string} and {end_date_string} (including the end date): {difference + 1} days"
+    )
+    print(
+        f"Duration between {start_date_string} and {end_date_string} (excluding the end date): {difference} days"
+    )
+
+
 if __name__ == "__main__":
     app()
