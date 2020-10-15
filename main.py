@@ -18,7 +18,10 @@ DAY_EMOJIS = {
 
 
 @app.command()
-def day(date_string: str = DATETIME_OBJ.now().strftime("%d/%m/%Y")):
+def day(date_string: str):
+    # Allow use to key in special keyword today as an argument
+    if date_string.strip().lower() == "today":
+        date_string = DATETIME_OBJ.now().strftime("%d/%m/%Y")
     date = DATETIME_OBJ.strptime(date_string, "%d/%m/%Y")
     day = date.strftime("%A")
     day += f" {emoji.emojize(DAY_EMOJIS[day])}"
