@@ -43,4 +43,4 @@ jobs:
         .venv/bin/black main.py
     - name: Execute script
       run: |
-        python main.py
+        .venv/bin/python main.py
