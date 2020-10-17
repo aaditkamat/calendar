@@ -29,7 +29,7 @@ jobs:
         source $HOME/.poetry/env
     - name: Configure Poetry for creation of a Python virtual environment within the project root
       run: |
-        poetry config. virtualenvs.in-project true
+        poetry config virtualenvs.in-project true
     - name: Install dependencies
       run: |
         poetry install
