@@ -15,15 +15,15 @@ Right now, the project's still a WIP, but I hope to add these two features soon.
 
 3. Install [Poetry](https://python-poetry.org/docs/):
 
-    -  MacOS / Linux / Bash on Windows:
-        ```bash
-        curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
-        ```
+-  MacOS / Linux / Bash on Windows:
+    ```bash
+    curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+    ```
 
-    -  Powershell:
-        ```powershell
-        (Invoke-WebRequest -Uri https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py -UseBasicParsing).Content | python -
-        ```
+-  Powershell:
+    ```powershell
+    (Invoke-WebRequest -Uri https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py -UseBasicParsing).Content | python -
+    ```
 
 4. [Configure Poetry](https://python-poetry.org/docs/configuration/) to allow creation of a Python virtual environment within the project root:
 ```bash
@@ -32,15 +32,15 @@ poetry config virtualenvs.in-project true
 
 5. Activate the virtual environment through the `activate` command:
 
-    - MacOS/Linux:
-    ```bash
-    source .venv/bin/activate
-    ```
+- MacOS/Linux:
+```bash
+source .venv/bin/activate
+```
 
-    - Powershell:
-    ```powershell
-    .venv\Scripts\Activate.ps1
-    ```
+- Powershell:
+```powershell
+.venv\Scripts\Activate.ps1
+```
 
 > NOTE: To find out more about Python virtual environment, you can refer to the [`venv` documentation](https://docs.python.org/3/library/venv.html)
 
