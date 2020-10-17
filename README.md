@@ -23,7 +23,7 @@ Right now, the project's still a WIP, but I hope to add these two features soon.
     -  Powershell:
         ```powershell
         (Invoke-WebRequest -Uri https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py -UseBasicParsing).Content | python -
-    ```
+        ```
 
 4. [Configure Poetry](https://python-poetry.org/docs/configuration/) to allow creation of a Python virtual environment within the project root:
 ```bash
