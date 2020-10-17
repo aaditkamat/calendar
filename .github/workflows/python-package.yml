@@ -26,7 +26,10 @@ jobs:
     - name: Install Poetry
       run: |
         curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
-        poetry config virtualenvs.in-pro
+        source $HOME/.poetry/env
+    - name: Configure Poetry for creation of a Python virtual environment within the project root
+      run: |
+        poetry config. virtualenvs.in-project true
     - name: Install dependencies
       run: |
         poetry install
