@@ -30,7 +30,12 @@ Right now, the project's still a WIP, but I hope to add these two features soon.
 poetry config virtualenvs.in-project true
 ```
 
-5. Activate the virtual environment through the `activate` command:
+5. Install the required dependencies through Poetry:
+```bash
+poetry install
+```
+
+6. Activate the virtual environment through the `activate` command:
 
 - MacOS/Linux:
 ```bash
@@ -43,11 +48,6 @@ source .venv/bin/activate
 ```
 
 > NOTE: To find out more about Python virtual environment, you can refer to the [`venv` documentation](https://docs.python.org/3/library/venv.html)
-
-6. Install the required dependencies through Poetry:
-```bash
-poetry install
-```
 
 7. Execute the `main.py` Python script to see all the CLI options:
 ```bash
