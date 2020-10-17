@@ -1,0 +1,41 @@
+# This workflow will execute the steps mentioned in the README in order to see if the project can be configured correctly
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: Python package
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.5, 3.6, 3.7, 3.8]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install Poetry
+      run: |
+        curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+        poetry config virtualenvs.in-pro
+    - name: Install dependencies
+      run: |
+        poetry install
+    - name: Activate virtual environment
+      run: |
+        source .venv/bin/activate
+    - name: Format with black
+      run: |
+        black main.py
+    - name: Execute script
+      run: |
+        python main.py
