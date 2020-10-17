@@ -39,7 +39,8 @@ def day(date_string: str):
 
 @app.command()
 def duration(
-    start_date_string: str, end_date_string: str,
+    start_date_string: str,
+    end_date_string: str,
 ):
     try:
         start_date, end_date = (
