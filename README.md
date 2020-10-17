@@ -13,31 +13,43 @@ Right now, the project's still a WIP, but I hope to add these two features soon.
 
 2. Install Python 3.8+ from the [official website](https://www.python.org/downloads/)
 
-3. Create a virtual environment using the Python `venv` module:
+3. Install [Poetry](https://python-poetry.org/docs/):
 
+MacOS / Linux / Bash on Windows:
 ```bash
-python3 -m venv venv
+curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
 ```
-4. Activate the virtual environment through the `activate` command:
+
+Powershell:
+```powershell
+(Invoke-WebRequest -Uri https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py -UseBasicParsing).Content | python -
+```
+
+4. [Configure the `virtualenvs.in-project` for Poetry to `true`](https://python-poetry.org/docs/configuration/) to allow creation of a Python virtual environment within the project root:
+```bash
+poetry config virtualenvs.in-project true
+```
+
+5. Activate the virtual environment through the `activate` command:
 
 MacOS/Linux:
 ```bash
-source venv/bin/activate
+source .venv/bin/activate
 ```
 
-Windows:
-```
-venv\Scripts\activate.bat
+Powershell:
+```powershell
+.venv\Scripts\Activate.ps1
 ```
 
 > NOTE: To find out more about Python virtual environment, you can refer to the [`venv` documentation](https://docs.python.org/3/library/venv.html)
 
-5. Install the required dependencies:
+6. Install the required dependencies through Poetry:
 ```bash
-pip install -r requirements.txt
+poetry install
 ```
 
-6. Execute the `main.py` Python script to see all the CLI options:
+7. Execute the `main.py` Python script to see all the CLI options:
 ```bash
 python main.py
 ```
