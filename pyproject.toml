@@ -6,7 +6,7 @@ authors = ["Aadit Kamat <aadit.k12@gmail.com>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python="^3.6"
 black = "^20.8b1"
 typer = "^0.3.2"
 emoji = "^0.6.0"
