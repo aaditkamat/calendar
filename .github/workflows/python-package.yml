@@ -31,10 +31,10 @@ jobs:
         source $HOME/.poetry/env
     - name: Configure Poetry for creation of a Python virtual environment within the project root
       run: |
-        poetry config virtualenvs.in-project true
+        $HOME/.poetry/bin/poetry config virtualenvs.in-project true
     - name: Install dependencies
       run: |
-        poetry install
+        $HOME/.poetry/bin/poetry install
     - name: Activate virtual environment
       run: |
         source .venv/bin/activate
