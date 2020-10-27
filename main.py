@@ -19,6 +19,10 @@ DAY_EMOJIS = {
     "Sunday": ":woozy_face:",
 }
 
+## The function that handles the day command. The day command only accepts a string
+## that represents the date in DD/MM/YYYY format. Also adds an emoji at the end based
+## on what day the date falls on.
+
 
 @app.command()
 def day(date_string: str):
@@ -58,6 +62,11 @@ def calculate_years_diff(start_date, end_date):
         return end_date.year - start_date.year
     else:
         return end_date.year - start_date.year - 1
+
+
+## The function that handles the duration command. The duration command accepts two strings
+## in DD/MM/YYYY format. The first is the start date and the other is the end date. This
+## command outputs the duration between the two dates in terms of days, months and years.
 
 
 @app.command()
