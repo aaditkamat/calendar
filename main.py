@@ -7,6 +7,8 @@ app = typer.Typer()
 
 DATETIME_OBJ = datetime.datetime(1970, 1, 1)
 
+DAYS_OF_THE_MONTH = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
 DAY_EMOJIS = {
     "Monday": ":confounded_face:",
     "Tuesday": ":smirking_face:",
@@ -37,6 +39,27 @@ def day(date_string: str):
         )
 
 
+def calculate_days_diff(start_date, end_date):
+    if end_date.day >= start_date.day:
+        return end_date.day - start_date.day
+    else:
+        return (DAYS_OF_THE_MONTH[start_date.month] - start_date.day) + end_date.day
+
+
+def calculate_months_diff(start_date, end_date):
+    if end_date.month >= start_date.month:
+        return end_date.month - start_date.month
+    else:
+        return (end_date.month + 12) - start_date.month
+
+
+def calculate_years_diff(start_date, end_date):
+    if start_date.month >= end_date.month:
+        return end_date.year - start_date.year
+    else:
+        return end_date.year - start_date.year - 1
+
+
 @app.command()
 def duration(
     start_date_string: str,
@@ -47,13 +70,18 @@ def duration(
             DATETIME_OBJ.strptime(start_date_string, "%d/%m/%Y"),
             DATETIME_OBJ.strptime(end_date_string, "%d/%m/%Y"),
         )
-        difference = (end_date - start_date).days
+        diff = end_date - start_date
+        if diff.days < 0:
+            raise click.BadArgumentUsage(
+                f"The start date  must come after the end date"
+            )
+        days_diff = calculate_days_diff(start_date, end_date)
+        months_diff = calculate_months_diff(start_date, end_date)
+        years_diff = calculate_years_diff(start_date, end_date)
         print(
-            f"Duration between {start_date_string} and {end_date_string} (including the end date): {difference + 1} days"
+            f"The duration between {start_date} and {end_date} is: {years_diff} years, {months_diff} months and {days_diff} days."
         )
-        print(
-            f"Duration between {start_date_string} and {end_date_string} (excluding the end date): {difference} days"
-        )
+
     except ValueError:
         raise click.BadArgumentUsage(
             f"Either the START_DATE_STRING argument {start_date_string} or the END_DATE_STRING argument {end_date_string} is not of the expected format DD/MM/YYYY"
