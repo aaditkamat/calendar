@@ -88,7 +88,7 @@ def duration(
         months_diff = calculate_months_diff(start_date, end_date)
         years_diff = calculate_years_diff(start_date, end_date)
         print(
-            f"The duration between {start_date} and {end_date} is: {years_diff} years, {months_diff} months and {days_diff} days."
+            f"The duration between {start_date_string} and {end_date_string} is: {years_diff} years, {months_diff} months and {days_diff} days."
         )
 
     except ValueError:
