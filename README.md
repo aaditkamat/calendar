@@ -7,7 +7,7 @@ provides you with just that!
 
 Right now, the project's still a WIP, but I hope to add these two features soon.
 
-# Setup
+## Setup
 
 1. Fork this repository and clone it.
 
@@ -54,6 +54,10 @@ source .venv/bin/activate
 python main.py
 ```
 
-# Credits
+## Commands
+
+<img src="calendar-cli.gif" >
+
+## Credits
 1.  This CLI utility has been bootstrapped with [@tiangolo's  Typer](https://github.com/tiangolo/typer)
 2.  Emojis from [emojis.wiki](https://emojis.wiki/monday/)
