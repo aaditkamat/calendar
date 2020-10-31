@@ -33,10 +33,13 @@ def day(date_string: str):
         date = DATETIME_OBJ.strptime(date_string, "%d/%m/%Y")
         day = date.strftime("%A")
         day += f" {emoji.emojize(DAY_EMOJIS[day])}"
-        if date_string == DATETIME_OBJ.now().strftime("%d/%m/%Y"):
+        diff = date - DATETIME_OBJ.now()
+        if diff.days == 0:
             typer.echo(f"Today is {day}")
-        else:
+        elif diff.days < 0:
             typer.echo(f"{date.strftime('%B %d %Y')} was a {day}")
+        else:
+            typer.echo(f"{date.strftime('%B %d %Y')} will be a {day}")
     except ValueError:
         raise click.BadArgumentUsage(
             "DATE_STRING argument {date_string} is not of the expected format DD/MM/YYYY"
