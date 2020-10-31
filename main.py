@@ -5,6 +5,8 @@ import emoji
 
 app = typer.Typer()
 
+SPECIAL_KEYWORDS = ["today", "yesterday", "tomorrow"]
+
 CURRENT_DATE = datetime.datetime.now()
 
 DAYS_OF_THE_MONTH = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
@@ -19,17 +21,26 @@ DAY_EMOJIS = {
     "Sunday": ":woozy_face:",
 }
 
-## The function that handles the day command. The day command only accepts a string
-## that represents the date in DD/MM/YYYY format. Also adds an emoji at the end based
-## on what day the date falls on.
+def convert_to_date_string(keyword: str):
+    if keyword == "today":
+        date_string = CURRENT_DATE.strftime("%d/%m/%Y")
+    elif keyword == "tomorrow":
+        date_string = (CURRENT_DATE + datetime.timedelta(1)).strftime("%d/%m/%Y")
+    else:
+        date_string = (CURRENT_DATE - datetime.timedelta(1)).strftime("%d/%m/%Y")
+    return date_string
 
+## The function that handles the day command. The day command accepts either a string
+## that represents the date in DD/MM/YYYY format or one of the special keywords:
+## today, tomorrow and yesterday . Also adds an emoji at the end based
+## on what day the date falls on.
 
 @app.command()
 def day(date_string: str):
     try:
-        # Allow use to key in special keyword today as an argument
-        if date_string.strip().lower() == "today":
-            date_string = CURRENT_DATE.strftime("%d/%m/%Y")
+        # Allow user to key in special keywords today, tomorrow and yesterday
+        if date_string.strip().lower() in SPECIAL_KEYWORDS:
+            date_string = convert_to_date_string(date_string.strip().lower())
         date = CURRENT_DATE.strptime(date_string, "%d/%m/%Y")
         day = date.strftime("%A")
         day += f" {emoji.emojize(DAY_EMOJIS[day])}"
