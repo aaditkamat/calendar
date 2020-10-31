@@ -5,7 +5,7 @@ import emoji
 
 app = typer.Typer()
 
-DATETIME_OBJ = datetime.datetime(1970, 1, 1)
+CURRENT_DATE = datetime.datetime.now()
 
 DAYS_OF_THE_MONTH = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
@@ -29,12 +29,12 @@ def day(date_string: str):
     try:
         # Allow use to key in special keyword today as an argument
         if date_string.strip().lower() == "today":
-            date_string = DATETIME_OBJ.now().strftime("%d/%m/%Y")
-        date = DATETIME_OBJ.strptime(date_string, "%d/%m/%Y")
+            date_string = CURRENT_DATE.strftime("%d/%m/%Y")
+        date = CURRENT_DATE.strptime(date_string, "%d/%m/%Y")
         day = date.strftime("%A")
         day += f" {emoji.emojize(DAY_EMOJIS[day])}"
-        diff = date - DATETIME_OBJ.now()
-        if diff.days == 0:
+        diff = date - CURRENT_DATE
+        if date_string == CURRENT_DATE.strftime("%d/%m/%Y"):
             typer.echo(f"Today is {day}")
         elif diff.days < 0:
             typer.echo(f"{date.strftime('%B %d %Y')} was a {day}")
@@ -79,8 +79,8 @@ def duration(
 ):
     try:
         start_date, end_date = (
-            DATETIME_OBJ.strptime(start_date_string, "%d/%m/%Y"),
-            DATETIME_OBJ.strptime(end_date_string, "%d/%m/%Y"),
+            CURRENT_DATE.strptime(start_date_string, "%d/%m/%Y"),
+            CURRENT_DATE.strptime(end_date_string, "%d/%m/%Y"),
         )
         diff = end_date - start_date
         if diff.days < 0:
