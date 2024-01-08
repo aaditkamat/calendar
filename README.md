@@ -5,8 +5,6 @@ As a developer, have you ever wanted to look up what day of the week a particula
 the duration between two dates right from your terminal? Well, wait no more because this CLI utility
 provides you with just that!
 
-Right now, the project's still a WIP, but I hope to add these two features soon.
-
 ## Setup
 
 1. Fork this repository and clone it.
